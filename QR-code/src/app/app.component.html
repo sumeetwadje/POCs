@@ -1,0 +1,24 @@
+<div style="width: 100%;">
+  <h1 style="background-color:aliceblue; padding: 1rem;">QR code generator</h1>
+  <h3>QR code generator</h3>
+  <div style="display: flex; justify-content: center">
+    <div>
+      <p style="padding-right: 5rem;">A QR code, quick-response code, is a type of two-dimensional matrix barcode
+        invented in 1994 by Masahiro Hara
+        of Japanese company Denso Wave for labelling automobile parts. Fill the Input with URL to generate the QR code.
+      </p>
+    </div>
+    <div>
+      <img style="width: 10%;" src="../assets/handQrcodes.png" alt="">
+    </div>
+
+  </div>
+  <input (input)="onInputChange()" type="text" placeholder="enter a url" name="url" [(ngModel)]="urlName">
+  <br>
+  <button [disabled]="!urlName" style="margin-top: 2rem;" (click)="generateFunc()">Generate QR code</button>
+  @if(generateFlag){
+  <ng-container>
+    <qrcode [qrdata]="urlName" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  </ng-container>
+  }
+</div>
